@@ -1,21 +1,21 @@
+import { Routes, Route } from "react-router-dom"
 import './App.css'
-import { Routes, Route } from 'react-router-dom'
-import Navbar from './components/Navbar'
-import Home from './components/Home'
-import AddProduct from './components/AddProduct'
+import Home from "./pages/Home"
+import AddProduct from "./pages/AddProduct"
+import Product from "./pages/Product"
+import Navbar from "./components/Navbar"
 
 function App() {
   return (
-    <div className="app-container">
+    <>
       <Navbar />
 
-      <main className="content">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/add" element={<AddProduct />} />
-        </Routes>
-      </main>
-    </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/add" element={<AddProduct />} />
+        <Route path="/product/:id" element={<Product />} />
+      </Routes>
+    </>
   )
 }
 

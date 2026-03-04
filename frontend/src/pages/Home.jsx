@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react'
+import { Link } from "react-router-dom"
+
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '/api'
 
@@ -17,15 +19,15 @@ function Home() {
 
   return (
     <div className="product-grid">
-      {products.map((p) => (
-        <div className="product-card" key={p.id}>
-          <h3>{p.product_name}</h3>
-          <p>{p.description}</p>
-          <p><strong>₹{p.price}</strong></p>
-          <p>{p.brand} | {p.category}</p>
-          <p>Stock: {p.stock_quantity}</p>
-        </div>
-      ))}
+        {products.map((p) => (
+          <Link to={`/product/${p.id}`} key={p.id} className="product-card">
+              <h3>{p.product_name}</h3>
+              <p>{p.description}</p>
+              <p><strong>₹{p.price}</strong></p>
+              <p>{p.brand} | {p.category}</p>
+              <p>Stock: {p.stock_quantity}</p>
+          </Link>
+        ))}
     </div>
   )
 }
